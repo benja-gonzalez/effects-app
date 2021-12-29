@@ -1,4 +1,5 @@
 import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+import { FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 
 @Component({
@@ -9,21 +10,22 @@ import { Router } from '@angular/router';
 })
 export class NavbarComponent implements OnInit {
 
-	paramId: number = 658465419846518949;
-
+	paramId     : number = 658465419846518949;
+	formControl!: FormControl;
 	constructor(
 		private _router:Router
-	) { }
+	) { 
+		this.formControl = new FormControl('');
+	}
 
 	ngOnInit(): void {
 	}
 
-	goToUser = (value: string): void => {
-		console.log({value})
-		if(!value) {
+	goToUser = (): void => {
+		if(!this.formControl.value) {
 			return;
 		}
-		this._router.navigate(['usuario', value])
+		this._router.navigateByUrl('usuario/'+this.formControl.value)
 	}
 
 }

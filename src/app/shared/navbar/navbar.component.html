@@ -15,8 +15,8 @@
         </ul>
 
         <form class="d-flex">
-          <input #inputSerch class="form-control me-2" type="search" placeholder="ID usuario" aria-label="ID usuario">
-          <button (click)="goToUser( inputSerch.value )" class="btn btn-outline-primary" type="button">buscar</button>
+          <input [formControl]="formControl" (keyup.enter)="goToUser()" class="form-control me-2" type="number" placeholder="ID usuario" aria-label="ID usuario">
+          <button (click)="goToUser()" class="btn btn-outline-primary" type="button">buscar</button>
         </form>
 
     

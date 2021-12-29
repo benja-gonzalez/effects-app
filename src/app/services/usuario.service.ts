@@ -14,16 +14,17 @@ import { map } from 'rxjs/operators';
 })
 export class UsuarioService {
 
-	private _url: string = `${environment.api_url}`;
-	private _servlet: string = `api`;
+	private _url     : string = `${environment.api_url}`;
+	private _servlet : string = `api`;
 	private _per_page: number = 6;
+	private _delay   : number = 5
 
 	constructor(
 		private _http:HttpClient
 	) { }
 	// Listado de usuarios
 	getUsuarios = (): Observable<UsuarioModel[]> => { 
-		const url: string = `${this._url}/${this._servlet}/users?per_page=${this._per_page}`;
+		const url: string = `${this._url}/${this._servlet}/users?per_page=${this._per_page}&delay=${this._delay}`;
 		return this._http.get<ResponseUsuarios>(url).pipe( map( (response:any) => response.data ));
 	}
 	// Usuario individual

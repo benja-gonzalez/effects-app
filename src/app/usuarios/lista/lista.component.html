@@ -1,4 +1,33 @@
-<div class="row row-cols-1 row-cols-md-3 g-4">
+<div class="container d-flex" *ngIf="loading">
+    <div class="alert alert-info d-flex align-items-center w-50 justify-self-center flex-row mx-auto" role="alert">
+        <span class="mx-auto my-auto d-flex align-items-center">
+            <i class="fa fa-sync fa-spin fa-2x"></i>
+        </span>
+    </div>
+</div>
+
+
+<div class="container d-flex" *ngIf="!loading && error">
+    <div class="alert alert-danger d-flex align-items-start w-50 justify-self-center flex-column mx-auto" role="alert">
+        <pre>
+            <span class="my-auto d-flex align-items-center">
+                name: {{ error.name }}
+            </span>
+            <span class="my-auto d-flex align-items-center">
+                status: {{ error.status }}
+            </span>
+            <span class="my-auto d-flex align-items-center">
+                url: {{ error.url }}
+            </span>
+            <span class="my-auto d-flex align-items-center">
+                message: {{ error.message }}
+            </span>
+        </pre>
+    </div>
+</div>
+
+
+<div class="row row-cols-1 row-cols-md-3 g-4" *ngIf="!loading && (error === null)">
 
     <div class="col" *ngFor="let usuario of usuarios">
         <!-- CARD -->
