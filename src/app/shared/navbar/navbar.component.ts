@@ -1,4 +1,4 @@
-import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 
@@ -25,7 +25,7 @@ export class NavbarComponent implements OnInit {
 		if(!this.formControl.value) {
 			return;
 		}
-		this._router.navigateByUrl('usuario/'+this.formControl.value)
+		this._router.navigateByUrl('usuario/'+this.formControl.value);
 	}
 
 }

@@ -30,6 +30,6 @@ export class UsuarioService {
 	// Usuario individual
 	getUsuariosById = (payload:string): Observable<ResponseUsuarioById> => {
 		const url: string = `${this._url}/${this._servlet}/users/${payload}`;
-		return this._http.get<ResponseUsuarioById>(url);
+		return this._http.get<ResponseUsuarioById>(url).pipe( map( (response:any) => response.data ) );
 	}
 }

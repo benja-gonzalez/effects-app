@@ -1,7 +1,8 @@
+import { UsuarioEffects } from "./usuario.effects";
 import { UsuariosEffects } from "./usuarios.effects"
 
 
-export const effectsArray: any[] = [ UsuariosEffects ];
+export const effectsArray: any[] = [ UsuariosEffects, UsuarioEffects ];
 
 // tipo de error que devuelve el effecto
 export type ErrorEffect = 

@@ -2,9 +2,10 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
-import { UsrActions } from 'src/app/store/actions';
-import { GlobalState } from 'src/app/store/app.reducers';
-import { UsrReducers } from 'src/app/store/reducers';
+import { UsuarioModel } from '../../models/usuario.model';
+import { UsrActions } from '../../store/actions';
+import { GlobalState } from '../../store/app.reducers';
+import { ErrorEffect } from '../../store/effects';
 
 @Component({
 	selector: 'app-usuario',
@@ -14,7 +15,11 @@ import { UsrReducers } from 'src/app/store/reducers';
 })
 export class UsuarioComponent implements OnInit, OnDestroy {
 
-	subscriptrion!: Subscription;
+	subscriptrion    !: Subscription;
+	subscriptionStore!: Subscription;
+	usuario			 !: UsuarioModel | null;
+	isLoading         : boolean = false;
+	error            !: ErrorEffect | null;
 
 	constructor(
 		private _ar: ActivatedRoute,
@@ -25,6 +30,14 @@ export class UsuarioComponent implements OnInit, OnDestroy {
 		this.subscriptrion = this._ar.params.subscribe(
 			({id}) => {
 				this._store.dispatch(UsrActions.addUsuario({id}))
+			}
+		);
+
+		this.subscriptionStore = this._store.select('usuario').subscribe(
+			({usuario, loading, error}) => {
+				this.usuario = usuario;
+				this.isLoading = loading;
+				this.error = error;
 			}
 		)
 	}
