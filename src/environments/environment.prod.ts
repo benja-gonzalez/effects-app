@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  api_url   : `https://reqres.in/`
+  api_url   : `https://reqres.in`
 };
