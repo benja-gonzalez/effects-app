@@ -9,20 +9,20 @@
 
 <div class="container d-flex" *ngIf="!isLoading && error">
     <div class="alert alert-danger d-flex align-items-start w-50 justify-self-center flex-column mx-auto" role="alert">
-        <pre>
-            <span class="my-auto d-flex align-items-center">
-                name: {{ error.name }}
-            </span>
-            <span class="my-auto d-flex align-items-center">
-                status: {{ error.status }}
-            </span>
-            <span class="my-auto d-flex align-items-center">
-                url: {{ error.url }}
-            </span>
-            <span class="my-auto d-flex align-items-center">
-                message: {{ error.message }}
-            </span>
-        </pre>
+
+        <span class="my-auto">
+            name: {{ error.name }}
+        </span>
+        <span class="my-auto">
+            status: {{ error.status }}
+        </span>
+        <span class="my-auto">
+            url: {{ error.url }}
+        </span>
+        <span class="my-auto">
+            message: {{ error.message }}
+        </span>
+
     </div>
 </div>
 
